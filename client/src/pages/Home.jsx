@@ -3,6 +3,9 @@ import Hero from "../components/Hero/Hero";
 import Features from "../components/Features/Features";
 import HowItWorks from "../components/HowItWorks/HowItWorks";
 import Footer from "../components/Footer/Footer";
+import Stats from "../components/Stats/Stats";
+import TrustedBy from "../components/TrustedBy/TrustedBy";
+import Testimonials from "../components/Testimonials/Testimonials";
 
 function Home() {
   return (
