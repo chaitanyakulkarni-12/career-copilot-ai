@@ -1,46 +1,62 @@
 import { Link } from "react-router-dom";
+import SocialLogin from "./SocialLogin";
 
 function SignupForm() {
   return (
-    <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-10">
+    <>
+      <form className="space-y-5">
 
-      <h1 className="text-3xl font-bold text-center">
-        Create Account
-      </h1>
+        <div>
+          <label className="block mb-2 font-medium">
+            Full Name
+          </label>
 
-      <p className="text-gray-500 text-center mt-2">
-        Start your career journey
-      </p>
+          <input
+            type="text"
+            placeholder="Enter your full name"
+            className="w-full border rounded-xl px-4 py-3 outline-none focus:border-blue-600"
+          />
+        </div>
 
-      <form className="space-y-5 mt-8">
+        <div>
+          <label className="block mb-2 font-medium">
+            Email
+          </label>
 
-        <input
-          type="text"
-          placeholder="Full Name"
-          className="w-full border rounded-xl p-4"
-        />
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="w-full border rounded-xl px-4 py-3 outline-none focus:border-blue-600"
+          />
+        </div>
 
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full border rounded-xl p-4"
-        />
+        <div>
+          <label className="block mb-2 font-medium">
+            Password
+          </label>
 
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full border rounded-xl p-4"
-        />
+          <input
+            type="password"
+            placeholder="Create password"
+            className="w-full border rounded-xl px-4 py-3 outline-none focus:border-blue-600"
+          />
+        </div>
 
         <button
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-4"
+          className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition"
         >
           Create Account
         </button>
 
       </form>
 
-      <p className="text-center mt-6">
+      <div className="my-6 text-center text-gray-500">
+        OR
+      </div>
+
+      <SocialLogin />
+
+      <p className="text-center mt-8">
         Already have an account?
 
         <Link
@@ -49,10 +65,8 @@ function SignupForm() {
         >
           Login
         </Link>
-
       </p>
-
-    </div>
+    </>
   );
 }
 

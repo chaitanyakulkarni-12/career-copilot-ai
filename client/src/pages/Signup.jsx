@@ -1,10 +1,14 @@
+import AuthLayout from "../components/auth/AuthLayout";
 import SignupForm from "../components/auth/SignupForm";
 
 function Signup() {
   return (
-    <div className="min-h-screen bg-slate-100 flex items-center justify-center">
+    <AuthLayout
+      title="Create Account"
+      subtitle="Start your career journey with AI"
+    >
       <SignupForm />
-    </div>
+    </AuthLayout>
   );
 }
 
