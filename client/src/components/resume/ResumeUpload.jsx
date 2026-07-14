@@ -3,12 +3,38 @@ import ResumeScore from "./ResumeScore";
 import Suggestions from "./Suggestions";
 
 function ResumeUpload() {
+
   const [fileName, setFileName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [analyzed, setAnalyzed] = useState(false);
 
   function handleFile(e) {
     if (e.target.files.length > 0) {
       setFileName(e.target.files[0].name);
+
+      // Reset previous analysis
+      setLoading(false);
+      setAnalyzed(false);
     }
+  }
+
+  function handleAnalyze() {
+
+    if (!fileName) {
+      alert("Please upload a resume first.");
+      return;
+    }
+
+    setLoading(true);
+    setAnalyzed(false);
+
+    setTimeout(() => {
+
+      setLoading(false);
+      setAnalyzed(true);
+
+    }, 2000);
+
   }
 
   return (
@@ -20,55 +46,103 @@ function ResumeUpload() {
           Resume Analyzer
         </h1>
 
+        {/* Upload Card */}
+
         <div className="bg-white rounded-2xl shadow p-8">
 
-          <label className="border-2 border-dashed border-blue-400 rounded-xl p-12 flex flex-col items-center cursor-pointer">
+          <label
+            htmlFor="resume"
+            className="border-2 border-dashed border-blue-400 rounded-2xl
+            p-14 flex flex-col items-center justify-center
+            cursor-pointer hover:bg-blue-50 transition"
+          >
 
-            <h2 className="text-xl font-semibold">
-              Drag & Drop Resume
+            <div className="text-6xl">
+              📄
+            </div>
+
+            <h2 className="text-2xl font-bold mt-4">
+              Upload Resume
             </h2>
 
             <p className="text-gray-500 mt-2">
-              PDF Only
+              Drag & Drop PDF Resume Here
             </p>
 
-            <input
-              type="file"
-              accept=".pdf"
-              className="hidden"
-              onChange={handleFile}
-            />
+            <p className="text-gray-400 mt-2">
+              or click to browse
+            </p>
 
           </label>
 
+          <input
+            id="resume"
+            type="file"
+            accept=".pdf"
+            className="hidden"
+            onChange={handleFile}
+          />
+
           {fileName && (
 
-            <div className="mt-6 bg-slate-100 rounded-xl p-4">
+            <div className="mt-8 bg-green-50 border border-green-300 rounded-xl p-5 flex justify-between items-center">
 
-              <strong>Selected File:</strong>
+              <div>
 
-              <p>{fileName}</p>
+                <h3 className="font-bold">
+                  Resume Uploaded
+                </h3>
+
+                <p className="text-gray-600">
+                  {fileName}
+                </p>
+
+              </div>
+
+              <span className="text-green-600 font-bold">
+                ✓ Ready
+              </span>
 
             </div>
 
           )}
 
           <button
-            className="mt-8 bg-blue-600 text-white px-8 py-3 rounded-xl hover:bg-blue-700 transition"
+            onClick={handleAnalyze}
+            className="w-full mt-8 bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-semibold transition"
           >
-            Analyze Resume
+            Analyze Resume →
           </button>
 
         </div>
 
-        {fileName && (
+        {/* Loading Animation */}
 
+        {loading && (
+
+          <div className="bg-white rounded-2xl shadow p-10 mt-8 text-center">
+
+            <div className="w-14 h-14 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
+
+            <h2 className="text-2xl font-bold mt-6">
+              🤖 AI is analyzing your resume...
+            </h2>
+
+            <p className="text-gray-500 mt-3">
+              Checking ATS compatibility, keywords and resume quality...
+            </p>
+
+          </div>
+
+        )}
+
+        {/* Analysis Result */}
+
+        {analyzed && (
           <>
             <ResumeScore />
-
             <Suggestions />
           </>
-
         )}
 
       </div>
