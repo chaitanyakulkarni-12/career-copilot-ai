@@ -1,12 +1,14 @@
 import { useState } from "react";
 import ResumeScore from "./ResumeScore";
 import Suggestions from "./Suggestions";
+import DetectedSkills from "./DetectedSkills";
 
 function ResumeUpload() {
 
   const [fileName, setFileName] = useState("");
   const [loading, setLoading] = useState(false);
   const [analyzed, setAnalyzed] = useState(false);
+  const [result, setResult] = useState(null);
 
   function handleFile(e) {
     if (e.target.files.length > 0) {
@@ -18,24 +20,53 @@ function ResumeUpload() {
     }
   }
 
-  function handleAnalyze() {
+ async function handleAnalyze() {
 
-    if (!fileName) {
-      alert("Please upload a resume first.");
-      return;
-    }
+  if (!fileName) {
+    alert("Please upload a resume first.");
+    return;
+  }
 
-    setLoading(true);
-    setAnalyzed(false);
+  setLoading(true);
+  setAnalyzed(false);
 
-    setTimeout(() => {
+  const fileInput = document.getElementById("resume");
 
-      setLoading(false);
-      setAnalyzed(true);
+  const formData = new FormData();
 
-    }, 2000);
+  formData.append("resume", fileInput.files[0]);
+
+  try {
+
+    const response = await fetch(
+      "http://localhost:5000/api/resume/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+      
+    );
+setResult(response.data);
+    const data = await response.json();
+
+  console.log("Extracted Resume Text:");
+console.log(response.data);
+
+    setLoading(false);
+
+    setAnalyzed(true);
+
+  } catch (error) {
+
+    console.error(error);
+
+    setLoading(false);
+
+    alert("Server Error");
 
   }
+
+}
 
   return (
     <div className="min-h-screen bg-slate-100 p-10">
@@ -140,8 +171,16 @@ function ResumeUpload() {
 
         {analyzed && (
           <>
-            <ResumeScore />
-            <Suggestions />
+           {result && (
+    <ResumeScore score={result.score} />
+    
+)}
+{result && (
+    <DetectedSkills skills={result.skills} />
+)}  
+          {result && (
+    <Suggestions suggestions={result.suggestions} />
+)}
           </>
         )}
 

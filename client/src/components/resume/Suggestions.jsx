@@ -1,35 +1,36 @@
-const tips = [
-  "Add more action verbs.",
-  "Include measurable achievements.",
-  "Improve skills section.",
-  "Mention relevant projects.",
-];
+function Suggestions({ suggestions }) {
 
-function Suggestions() {
-  return (
-    <div className="bg-white rounded-2xl shadow p-8 mt-8">
+    return (
 
-      <h2 className="text-2xl font-bold mb-6">
-        AI Suggestions
-      </h2>
+        <div className="bg-white rounded-2xl shadow p-8 mt-8">
 
-      <ul className="space-y-4">
+            <h2 className="text-2xl font-bold mb-5">
 
-        {tips.map((tip, index) => (
+                AI Suggestions
 
-          <li
-            key={index}
-            className="bg-slate-100 rounded-lg p-4"
-          >
-            ✅ {tip}
-          </li>
+            </h2>
 
-        ))}
+            <div className="space-y-4">
 
-      </ul>
+                {suggestions.map((item, index) => (
 
-    </div>
-  );
+                    <div
+                        key={index}
+                        className="bg-slate-100 rounded-xl p-4"
+                    >
+
+                        ✅ {item}
+
+                    </div>
+
+                ))}
+
+            </div>
+
+        </div>
+
+    );
+
 }
 
 export default Suggestions;
