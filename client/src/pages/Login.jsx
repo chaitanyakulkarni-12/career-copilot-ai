@@ -1,10 +1,14 @@
+import AuthLayout from "../components/auth/AuthLayout";
 import LoginForm from "../components/auth/LoginForm";
 
 function Login() {
   return (
-    <div className="min-h-screen bg-slate-100 flex items-center justify-center">
+    <AuthLayout
+      title="Welcome Back"
+      subtitle="Login to continue your journey"
+    >
       <LoginForm />
-    </div>
+    </AuthLayout>
   );
 }
 
