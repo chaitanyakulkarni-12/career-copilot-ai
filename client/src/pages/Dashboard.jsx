@@ -7,6 +7,8 @@ import RecentApplications from "../components/dashboard/RecentApplications";
 import AIRecommendations from "../components/dashboard/AIRecommendations";
 import LearningProgress from "../components/dashboard/LearningProgress";
 import UpcomingInterview from "../components/dashboard/UpcomingInterview";
+import AnalyticsChart from "../components/dashboard/AnalyticsChart";
+import SkillsChart from "../components/dashboard/SkillsChart";
 
 function Dashboard() {
   return (
@@ -63,6 +65,13 @@ function Dashboard() {
     <UpcomingInterview />
 
       </div>
+      <div className="grid lg:grid-cols-2 gap-6 mt-8">
+
+  <AnalyticsChart />
+
+  <SkillsChart />
+
+</div>
     </DashboardLayout>
   );
 }
