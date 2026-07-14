@@ -9,6 +9,7 @@ import LearningProgress from "../components/dashboard/LearningProgress";
 import UpcomingInterview from "../components/dashboard/UpcomingInterview";
 import AnalyticsChart from "../components/dashboard/AnalyticsChart";
 import SkillsChart from "../components/dashboard/SkillsChart";
+import InterviewCalendar from "../components/dashboard/InterviewCalendar";
 
 function Dashboard() {
   return (
@@ -70,6 +71,11 @@ function Dashboard() {
   <AnalyticsChart />
 
   <SkillsChart />
+
+</div>
+<div className="mt-8">
+
+  <InterviewCalendar />
 
 </div>
     </DashboardLayout>
