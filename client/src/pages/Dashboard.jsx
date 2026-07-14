@@ -3,9 +3,10 @@ import Sidebar from "../components/dashboard/Sidebar";
 import Topbar from "../components/dashboard/Topbar";
 import WelcomeCard from "../components/dashboard/WelcomeCard";
 import StatsCard from "../components/dashboard/StatsCard";
-
 import RecentApplications from "../components/dashboard/RecentApplications";
 import AIRecommendations from "../components/dashboard/AIRecommendations";
+import LearningProgress from "../components/dashboard/LearningProgress";
+import UpcomingInterview from "../components/dashboard/UpcomingInterview";
 
 function Dashboard() {
   return (
@@ -55,6 +56,13 @@ function Dashboard() {
 
       </div>
 
+      <div className="grid lg:grid-cols-2 gap-6 mt-8">
+
+    <LearningProgress />
+
+    <UpcomingInterview />
+
+      </div>
     </DashboardLayout>
   );
 }
