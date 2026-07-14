@@ -11,6 +11,7 @@ import AnalyticsChart from "../components/dashboard/AnalyticsChart";
 import SkillsChart from "../components/dashboard/SkillsChart";
 import InterviewCalendar from "../components/dashboard/InterviewCalendar";
 import Notifications from "../components/dashboard/Notifications";
+import ProfileCard from "../components/dashboard/ProfileCard";
 
 function Dashboard() {
   return (
@@ -82,6 +83,11 @@ function Dashboard() {
 <div className="mt-8">
 
     <Notifications />
+
+</div>
+<div className="mt-8">
+
+    <ProfileCard />
 
 </div>
     </DashboardLayout>
