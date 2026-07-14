@@ -1,5 +1,7 @@
+import ResumeUpload from "../components/resume/ResumeUpload";
+
 function ResumeAnalyzer() {
-  return <h1>Resume Analyzer</h1>;
+  return <ResumeUpload />;
 }
 
 export default ResumeAnalyzer;
